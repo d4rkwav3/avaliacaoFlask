@@ -1,5 +1,7 @@
+from turtle import home
 from flask import Flask
 from .extensions import database, migrate
+from .routes.home import home
 
 
 def create_app():
@@ -9,5 +11,7 @@ def create_app():
 
     database.init_app(app)
     migrate.init_app(app)
+
+    app.register_blueprint(home)
 
     return app
