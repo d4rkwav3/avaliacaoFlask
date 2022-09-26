@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <title>Novo Cliente</title>
+</head>
+
+<body>
+    <header
+        class="toast-header mb-5 p-4 bg-primary text-center d-flex align-items-center justify-content-center text-bg-primary">
+        <h1>Cadastro de cliente</h1>
+    </header>
+    <main class="text-center d-flex align-items-center justify-content-center flex-column">
+        <form action="/novo/add" method="POST" class="bg-primary p-2 rounded w-50">
+            <label for="nome" class="badge bg-primary m-2">Nome completo</label>
+            <input type="text" name="nome" id="nome" placeholder="Nome completo" class="form-control">
+            <label for="cpf" class="badge bg-primary m-2">CPF (apenas números)</label>
+            <input type="text" name="cpf" id="cpf" placeholder="CPF" class="form-control">
+            <label for="idade" class="badge bg-primary m-2">Idade</label>
+            <input type="number" name="idade" id="idade" placeholder="Idade" class="form-control">
+            <label for="fone" class="badge bg-primary m-2">Telefone (apenas números)</label>
+            <input type="tel" name="telefone" id="telefone" placeholder="Telefone" class="form-control">
+            <label for="email" class="badge bg-primary m-2">E-mail</label>
+            <input type="email" name="email" id="email" placeholder="Endereço de e-mail" class="form-control">
+            <div class="d-block my-5">
+                <a href="/" class="btn btn-outline-dark active" role="button" aria-pressed="true">Voltar</a>
+                <input class="btn btn-primary active" type="submit" value="Cadastrar">
+            </div>
+        </form>
+    </main>
+</body>
+
+</html>
