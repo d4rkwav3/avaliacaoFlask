@@ -1,4 +1,3 @@
-from turtle import home
 from flask import Flask
 from .extensions import database, migrate
 from .routes.home import home
