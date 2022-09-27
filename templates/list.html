@@ -27,6 +27,7 @@
                 <th>Idade</th>
                 <th>Telefone</th>
                 <th>E-mail</th>
+                <th></th>
             </thead>
             <tbody>
                 {% for cadastro in clientes %}
@@ -36,6 +37,8 @@
                     <td>{{ cadastro.idade }}</td>
                     <td>{{ cadastro.fone }}</td>
                     <td>{{ cadastro.email }}</td>
+                    <td><a href="/list/update/{{ cadastro.id }}" class="btn btn-primary active" role="button"
+                        aria-pressed="true">Alterar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <title>Alterar cadastro</title>
+</head>
+
+<body>
+    <header
+        class="toast-header mb-5 p-4 bg-primary text-center d-flex align-items-center justify-content-center text-bg-primary">
+        <h1>Clientes cadastrados</h1>
+    </header>
+    <main class="container">
+        <form method="POST" action="/list/upd">
+            <input type="hidden" id="id" name="id" value="{{ client.id }}">
+        <table class="table table-striped d-flex justify-content-center align-items-center">
+            <tbody>
+                <tr>
+                    <td>Nome: </td>
+                    <td><input type="text" name="nome" id="nome" value="{{ client.nome }}" disabled></td>
+                </tr>
+                <tr>
+                    <td>CPF: </td>
+                    <td><input type="text" name="cpf" id="cpf" value="{{ client.cpf }}" disabled></td>
+                </tr>
+                <tr>
+                    <td>Idade: </td>
+                    <td><input type="number" name="idade" id="idade" value="{{ client.idade }}" required></td>
+                </tr>
+                <tr>
+                    <td>Telefone: </td>
+                    <td><input type="text" name="telefone" id="telefone" value="{{ client.fone }}" required></td>
+                </tr>
+                <tr>
+                    <td>E-mail: </td>
+                    <td><input type="text" name="email" id="email" value="{{ client.email }}" required></td>
+                </tr>
+                <tr>
+                    <td><a href="/list" class="btn btn-dark btn-lg active d-block ms-5 align-items-center">Voltar</a></td>
+                    <td><input class="btn btn-primary btn-lg active d-block mx-5 align-items-center" type="submit" value="Alterar"></td>   
+                </tr>                            
+            </tbody>
+        </table>
+    </main>
+</body>
+
+</html>
