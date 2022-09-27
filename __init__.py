@@ -3,6 +3,7 @@ from .extensions import database, migrate
 from .routes.home import home
 from .routes.new import new
 from .routes.list import list_clients
+from .routes.appointment import aptm
 from .setup_db import create_database
 
 
@@ -28,5 +29,6 @@ def create_app():
     app.register_blueprint(home)
     app.register_blueprint(new)
     app.register_blueprint(list_clients)
+    app.register_blueprint(aptm)
 
     return app

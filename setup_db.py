@@ -40,7 +40,7 @@ def create_database():
         def __repr__(self) -> str:
             return f"\nConsulta [{self.id}]: Para {self.user_id.nome}\nLocal: {self.local}\nData: {dt.strptime(self.data, '%d-%m-%Y')}\nHora: {self.hora}\n Doutor(a): {self.doctor}"
 
-        def __init__(self, data:str, hora:str, local:str, doctor:str, user:int) -> None:
+        def __init__(self, data:dt, hora:t, local:str, doctor:str, user:int) -> None:
             self.data = data
             self.hora = hora
             self.local = local
