@@ -2,6 +2,7 @@ from flask import Flask
 from .extensions import database, migrate
 from .routes.home import home
 from .routes.new import new
+from .routes.list import list_clients
 from .setup_db import create_database
 
 
@@ -21,5 +22,6 @@ def create_app():
 
     app.register_blueprint(home)
     app.register_blueprint(new)
+    app.register_blueprint(list_clients)
 
     return app
