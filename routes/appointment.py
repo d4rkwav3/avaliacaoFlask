@@ -26,3 +26,14 @@ def add_appointment():
     db.session.add(appointment)
     db.session.commit()
     return redirect(url_for("home.home_page"))
+
+@aptm.route("/check_date", methods=['GET'])
+def check_date():
+    return render_template("ap_list.html"), 200
+
+@aptm.route("/date", methods=['POST'])
+def view_appointments():
+    data = dt.strptime(request.form["data"], "%Y-%m-%d")
+    date_query = Appointment.query.filter_by(data=data.strftime("%Y-%m-%d"))
+    users = User.query.all()
+    return render_template("date_list.html", dia=data.strftime("%Y-%m-%d"), data=date_query, user=users), 200

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,18 +10,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-    <title>Clinica</title>
+    <title>Consultas marcadas</title>
 </head>
-
 <body>
     <header class="toast-header mb-5 p-4 bg-primary text-center d-flex align-items-center justify-content-center text-bg-primary">
-        <h1>Sistema de agendamentos</h1>
+        <h1>Lista de consultas</h1>
     </header>
     <main class="text-center d-flex align-items-center justify-content-center flex-column">
-        <a href="/check_date" class="btn btn-primary btn-lg mb-2 w-25" role="button" aria-pressed="true">Nova consulta</a>
-        <a href="/add_ap" class="btn btn-primary btn-lg mb-2 w-25" role="button" aria-pressed="true">Nova consulta</a>
-        <a href="/list" class="btn btn-primary btn-lg mb-2 w-25" role="button" aria-pressed="true">Clientes cadastrados</a>
-        <a href="/novo" class="btn btn-primary btn-lg mb-2 w-25" role="button" aria-pressed="true">Cadastrar cliente</a>
+        <form action="/date" method="POST" class="bg-primary p-2 rounded w-50 mt-3">
+            <label for="data" class="badge bg-primary d-block my-4 mx-auto fs-3">Selecione uma dia para verificar as consultas marcadas</label>
+            <input type="date" name="data" id="data" class="d-block my-4 mx-auto">
+            <input class="btn btn-success btn-lg active my-2 mx-auto" type="submit" value="Consultar data">
+        </form>
     </main>
 </body>
 </html>
