@@ -1,9 +1,10 @@
 from sqlalchemy import create_engine, ForeignKey, Column, Integer, String, Date, Time
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker as sm
-from datetime import datetime
+from datetime import datetime as dt, time as t
 
 def create_database():
+    print("Criando nova base de dados na raiz do projeto...")
     engine = create_engine("sqlite:///avaliaçãoFlask/db.sqlite3", echo=True)
     Base = declarative_base()
 
@@ -37,7 +38,7 @@ def create_database():
         user = relationship("User", backref = "User")
 
         def __repr__(self) -> str:
-            return f"\nConsulta [{self.id}]: Para {self.user_id.nome}\nLocal: {self.local}\nData: {datetime.strptime(self.data, '%d-%m-%Y')}\nHora: {self.hora}\n Doutor(a): {self.doctor}"
+            return f"\nConsulta [{self.id}]: Para {self.user_id.nome}\nLocal: {self.local}\nData: {dt.strptime(self.data, '%d-%m-%Y')}\nHora: {self.hora}\n Doutor(a): {self.doctor}"
 
         def __init__(self, data:str, hora:str, local:str, doctor:str, user:int) -> None:
             self.data = data
@@ -48,11 +49,23 @@ def create_database():
 
     #User.appointment = relationship("Appointment", order_by=Appointment.id, back_populates="users")
     Base.metadata.create_all(engine)
-    '''
-    test_user = User("Teste", "teste", 32, "123456789", "teste@teste.com")
-    Session = sm(bind=engine)
-    session = Session()
 
-    session.add(bruno)
-    session.commit()
-    '''
+    print("Base de dados criada com sucesso!")
+
+    q = input("Deseja inserir dados de teste na base? ('S'im/'N'ão)\n")
+
+    if q == 'S' or q == 's' or q == "Sim" or q == "sim":
+        test_user = User("Fulano de Tal", "12345678910", 25, "123456789", "teste@teste.com")
+        Session = sm(bind=engine)
+        session = Session()
+
+        session.add(test_user)
+        session.commit()
+
+        test_appointment = Appointment(dt.strptime("20220930", "%Y%m%d"), t(9,0,0), "Internet, sala GitHub", "Flask", 1)
+        session.add(test_appointment)
+        session.commit()
+
+        print("Dados de teste inseridos com sucesso!")
+    else:
+        print("Nenhuma modificação feita na base de dados.")
