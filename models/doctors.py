@@ -1,4 +1,4 @@
-doctors = [
+doctors = (
     "Doutor Python",
     "Doutor Flask",
-]
+)

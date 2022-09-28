@@ -1,7 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date, Time, ForeignKey
-#from sqlalchemy.orm import relationship
 from ..extensions import database as db
-#from .users import User
 from datetime import datetime, time
 
 class Appointment(db.Model):

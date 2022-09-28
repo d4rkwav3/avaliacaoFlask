@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 from ..extensions import database as db
-#from ..models import appointment as ap
 
 class User(db.Model):
     __tablename__ = "User"

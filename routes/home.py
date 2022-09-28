@@ -1,5 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for
-from ..extensions import database as db
+from flask import Blueprint, render_template
 
 home = Blueprint("home", __name__)
 
