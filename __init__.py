@@ -12,7 +12,7 @@ def create_app():
         dbase = open("./avaliaçãoFlask/db.sqlite3", "r")
         dbase.close()
     except FileNotFoundError:
-        q = input("Nenhuma base de dados localiza, deseja criar uma nova? ('S'im/'N'ão)\n")
+        q = input("Nenhuma base de dados localizada, deseja criar uma nova? ('S'im/'N'ão)\n")
 
         if q == 'S' or q == 's' or q == "Sim" or q == "sim":
             create_database()
