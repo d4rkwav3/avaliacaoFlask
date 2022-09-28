@@ -9,13 +9,14 @@ def create_database():
     Base = declarative_base()
 
     class User(Base):
-        __tablename__ = "users"
+        __tablename__ = "User"
         id = Column(Integer, primary_key=True, autoincrement=True)
         cpf = Column(String(11), nullable=False)
         nome = Column(String(150), nullable=False)
         idade = Column(Integer, nullable=False)
         fone = Column(String(11), nullable=False)
         email = Column(String(150), nullable=False)
+        appointments = relationship("Appointment", backref='user')
 
         def __repr__(self) -> str:
             return f"\nUsuário [{self.id}]: {self.nome}\nIdade: {self.idade}\nCPF: {self.cpf}\nTelefone: {self.fone}\nE-mail: {self.email}"
@@ -28,26 +29,24 @@ def create_database():
             self.email = email
 
     class Appointment(Base):
-        __tablename__ = "appointment"
+        __tablename__ = "Appointment"
         id = Column(Integer, primary_key=True, autoincrement=True)
         data = Column(Date, nullable=False)
         hora = Column(Time, nullable=False)
         local = Column(String(50), nullable=False)
         doctor = Column(String(150), nullable=False)
-        user_id = Column(Integer, ForeignKey('users.id'))
-        user = relationship("User", backref = "User")
+        client_id = Column(Integer, ForeignKey('User.id'))
 
         def __repr__(self) -> str:
             return f"\nConsulta [{self.id}]: Para {self.user_id.nome}\nLocal: {self.local}\nData: {dt.strptime(self.data, '%d-%m-%Y')}\nHora: {self.hora}\n Doutor(a): {self.doctor}"
 
-        def __init__(self, data:dt, hora:t, local:str, doctor:str, user:int) -> None:
+        def __init__(self, data:dt, hora:t, local:str, doctor:str, user:User) -> None:
             self.data = data
             self.hora = hora
             self.local = local
             self.doctor = doctor
-            self.user_id = user
+            self.client_id = user
 
-    #User.appointment = relationship("Appointment", order_by=Appointment.id, back_populates="users")
     Base.metadata.create_all(engine)
 
     print("Base de dados criada com sucesso!")

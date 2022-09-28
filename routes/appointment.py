@@ -4,6 +4,7 @@ from ..models.users import User
 from ..models.appointment import Appointment
 from ..models.places import places
 from ..models.doctors import doctors
+from ..models.meses import meses
 from datetime import datetime as dt, time as t
 
 aptm = Blueprint("Appointment", __name__)
@@ -34,6 +35,11 @@ def check_date():
 @aptm.route("/date", methods=['POST'])
 def view_appointments():
     data = dt.strptime(request.form["data"], "%Y-%m-%d")
+    datastr = str(data)
+    ano = int(datastr[0:4])
+    mes_number = int(datastr[5:7])
+    mes_letters = meses.get(int(datastr[5:7]))
+    dia = int(datastr[8:10])
+
     date_query = Appointment.query.filter_by(data=data.strftime("%Y-%m-%d"))
-    users = User.query.all()
-    return render_template("date_list.html", dia=data.strftime("%Y-%m-%d"), data=date_query, user=users), 200
+    return render_template("date_list.html", dia=dia, mes_number=mes_number, mes_letters=mes_letters, ano=ano, data=date_query), 200

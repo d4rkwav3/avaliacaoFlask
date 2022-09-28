@@ -1,14 +1,17 @@
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from ..extensions import database as db
-from ..models import appointment as ap
+#from ..models import appointment as ap
 
 class User(db.Model):
-    __tablename__ = "users"
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    cpf = db.Column(db.String(11), nullable=False)
-    nome = db.Column(db.String(150), nullable=False)
-    idade = db.Column(db.Integer, nullable=False)
-    fone = db.Column(db.String(11), nullable=False)
-    email = db.Column(db.String(150), nullable=False)
+    __tablename__ = "User"
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    nome = Column(String(150), nullable=False)
+    cpf = Column(String(11), nullable=False)
+    idade = Column(Integer, nullable=False)
+    fone = Column(String(11), nullable=False)
+    email = Column(String(150), nullable=False)
+    appointments = relationship("Appointment", backref='client')
 
     def __repr__(self) -> str:
         return f"\nUsuário [{self.id}]: {self.nome}\nIdade: {self.idade}\nCPF: {self.cpf}\nTelefone: {self.fone}\nE-mail: {self.email}"

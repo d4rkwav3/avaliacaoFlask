@@ -10,11 +10,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-    <title>Consultas de {{dia}}</title>
+    <title>Consultas de {{ dia }}/{{ mes_number }}/{{ ano }}</title>
 </head>
 <body>
     <header class="toast-header mb-5 p-4 bg-primary text-center d-flex align-items-center justify-content-center text-bg-primary">
-        <h1>Consultas de {{dia}}</h1>
+        <h1>Consultas de {{dia}} do {{ mes_letters }} de {{ ano }}</h1>
     </header>
     <main class="container">
         <table class="table table-hover table-striped">
@@ -25,6 +25,7 @@
                 <th>Doutor(a)</th>
                 <th>Cliente</th>
                 <th>CPF</th>
+                <th>Telefone</th>
             </thead>
             <tbody>
                 {% for consulta in data %}
@@ -33,7 +34,9 @@
                     <td>{{ consulta.local }}</td>
                     <td>{{ consulta.hora }}</td>
                     <td>{{ consulta.doctor }}</td>
-                    <td>{{ consulta.user_id }}</td>
+                    <td>{{ consulta.client.nome }}</td>
+                    <td>{{ consulta.client.cpf }}</td>
+                    <td>{{ consulta.client.fone }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
