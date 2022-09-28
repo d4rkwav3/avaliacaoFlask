@@ -33,7 +33,7 @@ Caso nenhum dos comandos acima funcione, muito provalvemente o Python/PiP
 não está configurado no PATH do seu ambiente (tente reinstalar o Python). 
 ## Rodando localmente
 
-Clone o projeto:
+Clone o projeto (Use o powershell/cmd no Windows ou sua shell favorita no Linux):
 
 ```bash
   git clone https://github.com/d4rkwav3/avaliacaoFlask.git
