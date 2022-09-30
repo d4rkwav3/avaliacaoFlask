@@ -5,11 +5,13 @@ from .routes.new import new
 from .routes.list import list_clients
 from .routes.appointment import aptm
 from .setup_db import create_database
+import os
 
 
 def create_app():
+    caminho = os.path.abspath(os.getcwd())+"/db.sqlite3"
     try:
-        dbase = open("./avaliaçãoFlask/db.sqlite3", "r")
+        dbase = open(caminho, "r")
         dbase.close()
     except FileNotFoundError:
         q = input("Nenhuma base de dados localizada, deseja criar uma nova? ('S'im/'N'ão)\n")
