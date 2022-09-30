@@ -2,10 +2,12 @@ from sqlalchemy import create_engine, ForeignKey, Column, Integer, String, Date,
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship, sessionmaker as sm
 from datetime import datetime as dt, time as t
+import os
 
 def create_database():
     print("Criando nova base de dados na raiz do projeto...")
-    engine = create_engine("sqlite:///avaliaçãoFlask/db.sqlite3", echo=True)
+    caminho = os.path.abspath(os.getcwd())
+    engine = create_engine("sqlite:///" + caminho + "/db.sqlite3", echo=True)
     Base = declarative_base()
 
     class User(Base):
